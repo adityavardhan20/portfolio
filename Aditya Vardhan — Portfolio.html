@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aditya Vardhan — Computer Science Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF1ED; --surface:#FFFFFF; --ink:#142019; --ink-soft:#4B5A52;
+    --accent:#2F6F62; --accent-warm:#C98A2C; --line:#D3DAD5;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12181A; --surface:#182320; --ink:#EAF0EC; --ink-soft:#9DB0A6;
+      --accent:#6FBFA9; --accent-warm:#E0A94A; --line:#28322D;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12181A; --surface:#182320; --ink:#EAF0EC; --ink-soft:#9DB0A6;
+    --accent:#6FBFA9; --accent-warm:#E0A94A; --line:#28322D;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif; margin:0; letter-spacing:-0.01em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:var(--accent);}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+
+  /* Editor chrome */
+  .titlebar{
+    border-bottom:1px solid var(--line); background:var(--surface);
+  }
+  .titlebar-inner{
+    max-width:760px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:10px;
+  }
+  .dot{width:10px;height:10px;border-radius:50%; background:var(--line);}
+  .filename{font-size:13px; color:var(--ink-soft); margin-left:6px;}
+
+  /* Hero */
+  .hero{padding:64px 0 40px; border-bottom:1px solid var(--line);}
+  .hero .tag{font-size:14px; color:var(--accent); margin-bottom:14px;}
+  .hero h1{font-size:clamp(32px,6vw,48px); line-height:1.12;}
+  .hero p.role{font-size:18px; color:var(--ink-soft); margin-top:10px; max-width:52ch; line-height:1.55;}
+  .hero .links{margin-top:26px; display:flex; flex-wrap:wrap; gap:18px; font-size:14px;}
+  .hero .links a{text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:2px;}
+  .hero .links a:hover{border-color:var(--accent);}
+
+  section{padding:44px 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .gutter-label{font-size:12px; color:var(--ink-soft); margin-bottom:18px;}
+  .gutter-label .n{color:var(--accent); margin-right:8px;}
+
+  p{line-height:1.7; color:var(--ink-soft); font-size:15.5px;}
+
+  /* Skills */
+  .imports{display:grid; gap:10px;}
+  .imp-line{display:flex; gap:12px; font-size:14.5px; align-items:baseline; flex-wrap:wrap;}
+  .imp-kw{color:var(--accent-warm); white-space:nowrap;}
+  .imp-mod{color:var(--ink); font-weight:500;}
+  .imp-from{color:var(--ink-soft);}
+
+  /* Projects */
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:6px; margin-bottom:18px; overflow:hidden;
+  }
+  .card-head{
+    display:flex; justify-content:space-between; align-items:center; padding:12px 18px;
+    border-bottom:1px solid var(--line); background:color-mix(in srgb, var(--surface) 92%, var(--ink) 8%);
+  }
+  .card-head h3{font-size:17px;}
+  .card-head a{font-size:13px; color:var(--ink-soft); text-decoration:none;}
+  .card-head a:hover{color:var(--accent);}
+  .card-body{padding:18px;}
+  .card-body p{margin:0 0 12px;}
+  .stack{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px;}
+  .stack span{
+    font-size:12px; font-family:'IBM Plex Mono',monospace; color:var(--accent);
+    border:1px solid var(--line); border-radius:4px; padding:3px 8px;
+  }
+  .metric{color:var(--accent-warm); font-weight:500;}
+
+  /* Timeline */
+  .tl-item{display:grid; grid-template-columns:88px 1fr; gap:16px; padding:14px 0; border-top:1px solid var(--line);}
+  .tl-item:first-child{border-top:none;}
+  .tl-year{font-size:13px; color:var(--ink-soft); padding-top:2px;}
+  .tl-body h3{font-size:15.5px; margin-bottom:5px;}
+  .tl-body p{margin:0; font-size:14.5px;}
+
+  footer{padding:48px 0 64px;}
+  footer h2{font-size:26px; margin-bottom:10px;}
+  footer p{margin-bottom:22px;}
+  .contact-row{display:flex; flex-wrap:wrap; gap:22px; font-size:14.5px;}
+  .contact-row a{text-decoration:none; border-bottom:1px solid var(--line);}
+  .contact-row a:hover{border-color:var(--accent);}
+  .foot-note{margin-top:40px; font-size:12.5px; color:var(--ink-soft);}
+
+  @media (max-width:520px){
+    .tl-item{grid-template-columns:1fr;}
+    .tl-year{padding-top:0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+  <div class="titlebar-inner">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <span class="filename mono">aditya_vardhan.dev</span>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="tag mono">// computer science engineer</div>
+    <h1>Aditya Vardhan</h1>
+    <p class="role">CS engineering student building with Python, ML and data — I like turning messy problems into small, working tools. Based in Hyderabad, India.</p>
+    <div class="links mono">
+      <a href="mailto:adityavardhan571@gmail.com">adityavardhan571@gmail.com</a>
+      <a href="tel:+918252216214">+91 82522 16214</a>
+      <a href="https://linkedin.com/in/aditya-vardhan-8b511231b" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/adityavardhan" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="gutter-label mono"><span class="n">01</span>about</div>
+    <p>I'm a Computer Science & Engineering student at Sinhgad Academy of Engineering, Pune, graduating in 2026. My work sits at the intersection of software development and machine learning — I care about building things that are actually usable, not just technically correct. Recently certified in Azure AI Fundamentals and Azure cloud basics.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="gutter-label mono"><span class="n">02</span>skills</div>
+    <div class="imports mono">
+      <div class="imp-line"><span class="imp-kw">languages</span><span class="imp-mod">Python, Java</span></div>
+      <div class="imp-line"><span class="imp-kw">ml_ai</span><span class="imp-mod">NLP, Scikit-Learn, Deep Learning</span></div>
+      <div class="imp-line"><span class="imp-kw">data</span><span class="imp-mod">NumPy, Pandas, Matplotlib, Seaborn</span></div>
+      <div class="imp-line"><span class="imp-kw">databases</span><span class="imp-mod">MySQL, MongoDB, NoSQL</span></div>
+      <div class="imp-line"><span class="imp-kw">web</span><span class="imp-mod">HTML, CSS, JavaScript, ReactJS, Bootstrap</span></div>
+      <div class="imp-line"><span class="imp-kw">tools</span><span class="imp-mod">Git, VS Code, Jupyter, Eclipse, AWS</span></div>
+      <div class="imp-line"><span class="imp-kw">practice</span><span class="imp-mod">DSA, OOP, DBMS, Agile, Scrum, DevOps</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="gutter-label mono"><span class="n">03</span>projects</div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>Plagiarism Checker — AI</h3>
+        <a href="https://github.com/adityavardhan20/Plagiarism-checker-AI" target="_blank" rel="noopener">github ↗</a>
+      </div>
+      <div class="card-body">
+        <p>An AI-powered plagiarism checker that compares text using NLP and cosine similarity to flag duplicate content, wrapped in a Streamlit interface for real-time analysis with a <span class="metric">92% similarity accuracy</span> in highlighting matches.</p>
+        <div class="stack"><span>Python</span><span>NLP</span><span>Machine Learning</span><span>Streamlit</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <h3>AI Resume Maker</h3>
+        <a href="https://github.com/adityavardhan20/AI-Resume" target="_blank" rel="noopener">github ↗</a>
+      </div>
+      <div class="card-body">
+        <p>An AI-powered resume generator that reads a user's skills with NLP and produces ATS-friendly resumes with keyword optimization, backed by MySQL for storing and managing resume data.</p>
+        <div class="stack"><span>Python</span><span>NLP</span><span>Machine Learning</span><span>MySQL</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap">
+    <div class="gutter-label mono"><span class="n">04</span>education & certifications</div>
+
+    <div class="tl-item">
+      <div class="tl-year mono">2022–26</div>
+      <div class="tl-body">
+        <h3>B.E./B.Tech, Computer Science & Engineering</h3>
+        <p>Sinhgad Academy of Engineering, Pune — CGPA 7.5/10</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year mono">2025</div>
+      <div class="tl-body">
+        <h3>Microsoft Certified: Azure AI Fundamentals (AI-900)</h3>
+        <p>AI/ML foundations including NLP, and using Azure tools for data analysis, training and deployment.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year mono">2025</div>
+      <div class="tl-body">
+        <h3>Microsoft Certified: Azure Cloud (AZ-900)</h3>
+        <p>Core Azure concepts — storage, compute, networking, pricing and security.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year mono">—</div>
+      <div class="tl-body">
+        <h3>Generative AI, Java & NetBeans training</h3>
+        <p>Coursework covering LLM fundamentals and prompt engineering, core/advanced Java (OOP), and application development in NetBeans.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Let's talk</h2>
+    <p>Open to internships and entry-level roles in software development and applied ML.</p>
+    <div class="contact-row mono">
+      <a href="mailto:adityavardhan571@gmail.com">adityavardhan571@gmail.com</a>
+      <a href="tel:+918252216214">+91 82522 16214</a>
+      <a href="https://linkedin.com/in/aditya-vardhan-8b511231b" target="_blank" rel="noopener">linkedin.com/in/aditya-vardhan</a>
+      <a href="https://github.com/adityavardhan" target="_blank" rel="noopener">github.com/adityavardhan</a>
+    </div>
+    <div class="foot-note mono">Hyderabad, India</div>
+  </div>
+</footer>
+
+</body>
+</html>
